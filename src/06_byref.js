@@ -23,8 +23,9 @@ const arr = [1, 2, 3]
 
 const updateArray = arr => {
   arr.push(5)
+  console.log(arr)
 }
 
 console.log('old array', arr)
-updateArray(arr)
+updateArray([...arr])
 console.log('new array', arr)
