@@ -42,8 +42,25 @@ function Person() {
 
 const data = new Person()
 
-console.log(data);
-
-(function () {
+console.log(data)
+;(function () {
   console.log('implementation here')
 })()
+
+const person = {
+  name: 'name',
+  lastName: 'lastName',
+  age: 30,
+  nationality: 'thai',
+}
+
+const render = ({ name, lastName = 'lname', age = 30, nationality }) => {
+  console.log(name)
+  console.log(lastName)
+  console.log(age)
+  console.log(nationality)
+}
+
+render({
+  name: 'myname',
+})
