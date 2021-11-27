@@ -9,13 +9,7 @@ http
       const readable = fs.createReadStream(
         path.join(__dirname, 'assets', 'index.html'),
       )
-      readable.on('data', chunk => {
-        res.write(chunk)
-      })
-
-      readable.on('end', () => {
-        res.end()
-      })
+      readable.pipe(res)
     } else {
       const person = {
         name: 'john',
