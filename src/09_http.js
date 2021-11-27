@@ -1,10 +1,13 @@
 const http = require('http')
+const fs = require('fs')
+const path = require('path')
 
 http
   .createServer((req, res) => {
     if (req.url === '/index.html') {
       res.writeHead(200, { 'Content-Type': 'text/html' })
-      res.write('<h1>Hello world</h1>')
+      const file = fs.readFileSync(path.join(__dirname, 'assets', 'index.html'))
+      res.write(file)
       res.end()
     } else {
       const person = {
