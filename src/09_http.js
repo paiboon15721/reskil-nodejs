@@ -6,9 +6,16 @@ http
   .createServer((req, res) => {
     if (req.url === '/index.html') {
       res.writeHead(200, { 'Content-Type': 'text/html' })
-      const file = fs.readFileSync(path.join(__dirname, 'assets', 'index.html'))
-      res.write(file)
-      res.end()
+      const readable = fs.createReadStream(
+        path.join(__dirname, 'assets', 'index.html'),
+      )
+      readable.on('data', chunk => {
+        res.write(chunk)
+      })
+
+      readable.on('end', () => {
+        res.end()
+      })
     } else {
       const person = {
         name: 'john',
